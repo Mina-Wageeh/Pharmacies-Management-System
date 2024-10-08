@@ -13,11 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('inventories', function (Blueprint $table) {
+        Schema::create('inv_medicines', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('branch_id')->constrained();
-            $table->foreignId('medicine_id')->constrained();
+            $table->foreignId('branch_id');
+            $table->foreignId('inventory_id');
+
+            $table->string('code');
+            $table->string('name');
+            $table->decimal('price', 8, 2);
             $table->integer('quantity');
+
             $table->timestamps();
         });
     }
@@ -29,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('inventories');
+        Schema::dropIfExists('inv_medicines');
     }
 };

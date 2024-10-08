@@ -15,19 +15,22 @@ class BranchSeeder extends Seeder
      */
     public function run()
     {
-        Branch::create([
+        Branch::create
+        ([
             'name' => 'M-P',
             'phone' => '01071245911',
             'address' => 'Samalout'
         ]);
 
-        Branch::create([
+        Branch::create
+        ([
             'name' => 'M-P',
             'phone' => '01271245922',
             'address' => 'Matay'
         ]);
 
-        Branch::create([
+        Branch::create
+        ([
             'name' => 'M-P',
             'phone' => '01571245933',
             'address' => 'Bani-Mazar'

@@ -6,6 +6,8 @@ use App\Http\Controllers\BranchController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\InvMedicineController;
 use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Auth;
@@ -65,6 +67,20 @@ Route::group(['middleware'=>'auth'] , function()
         Route::get('edit/{id}', [MedicineController::class, 'edit'])->name('medicine.edit');
         Route::post('update/{id}', [MedicineController::class, 'update'])->name('medicine.update');
         Route::post('delete', [MedicineController::class, 'delete'])->name('medicine.delete');
+    });
+
+    Route::group(['prefix'=>'inventory'] , function()
+    {
+        Route::group(['prefix'=>'medicines'] , function()
+        {
+            Route::get('/', [InvMedicineController::class, 'index'])->name('inv_medicine.index');
+            Route::get('create', [InvMedicineController::class, 'create'])->name('inv_medicine.create');
+            Route::post('store', [InvMedicineController::class, 'store'])->name('inv_medicine.store');
+            Route::get('edit/{id}', [InvMedicineController::class, 'edit'])->name('inv_medicine.edit');
+            Route::post('update/{id}', [InvMedicineController::class, 'update'])->name('inv_medicine.update');
+            Route::post('delete', [InvMedicineController::class, 'delete'])->name('inv_medicine.delete');
+        });
+
     });
 
 

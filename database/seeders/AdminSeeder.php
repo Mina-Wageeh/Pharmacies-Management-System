@@ -19,21 +19,21 @@ class AdminSeeder extends Seeder
         User::create([
             'name' => 'Admin-One',
             'email' => 'admin1@admin.com',
-            'password' => Hash::make('123456mm'), // Encrypt the password
+            'password' => Hash::make('123456789'), // Encrypt the password
             'branch_id' => 1
         ]);
 
         User::create([
             'name' => 'Admin-Two',
             'email' => 'admin2@admin.com',
-            'password' => Hash::make('123456bb'), // Encrypt the password
+            'password' => Hash::make('123456789'), // Encrypt the password
             'branch_id' => 2
         ]);
 
         User::create([
             'name' => 'Admin-Three',
             'email' => 'admin3@admin.com',
-            'password' => Hash::make('123456aa'), // Encrypt the password
+            'password' => Hash::make('123456789'), // Encrypt the password
             'branch_id' => 3
         ]);
 
