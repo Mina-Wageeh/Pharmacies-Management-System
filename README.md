@@ -18,7 +18,7 @@
 - php artisan db:seed
 ---
 ---
-##Login
+## Login
 - admin1@admin.com
 - admin2@admin.com
 - admin3@admin.com
