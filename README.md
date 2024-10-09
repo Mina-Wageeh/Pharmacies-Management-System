@@ -8,15 +8,17 @@
 </p>
 
 
----
----
+----
+
 ## Installation
 - composr install
 - npm install
 - npm run dev
 - php artisan migrate
 - php artisan db:seed
----
+<br>
+<br>
+<b>
 ---
 ## Login
 - admin1@admin.com
