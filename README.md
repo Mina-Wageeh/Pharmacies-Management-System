@@ -13,10 +13,7 @@
 - npm run dev
 - php artisan migrate
 - php artisan db:seed
-<br>
-<br>
-<br>
----
+
 ## Login
 - admin1@admin.com
 - admin2@admin.com
