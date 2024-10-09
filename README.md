@@ -7,9 +7,6 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-
-----
-
 ## Installation
 - composr install
 - npm install
@@ -18,7 +15,7 @@
 - php artisan db:seed
 <br>
 <br>
-<b>
+<br>
 ---
 ## Login
 - admin1@admin.com
