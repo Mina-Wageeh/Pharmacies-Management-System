@@ -21,7 +21,7 @@
             {
                 e.preventDefault()
                 var medicine_id = $(this).attr('medicine_id')
-                var parent = $(this).parent().parent();
+                var parent = $(this).parent().parent().parent();
                 $.ajax({
                     type: 'post',
                     url: '{{route('medicine.delete')}}',

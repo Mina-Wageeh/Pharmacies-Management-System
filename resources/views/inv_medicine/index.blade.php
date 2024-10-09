@@ -20,15 +20,15 @@
             $(document).on('click' , '.delete-btn' , function(e)
             {
                 e.preventDefault()
-                var medicine_id = $(this).attr('medicine_id')
-                var parent = $(this).parent().parent();
+                var inv_medicine_id = $(this).attr('inv_medicine_id')
+                var parent = $(this).parent().parent().parent();
                 $.ajax({
                     type: 'post',
-                    url: '{{route('medicine.delete')}}',
+                    url: '{{route('inv_medicine.delete')}}',
                     data:
                         {
                             '_token' : '{{csrf_token()}}',
-                            'medicine_id' : medicine_id
+                            'inv_medicine_id' : inv_medicine_id
                         },
                     success : function(data)
                     {

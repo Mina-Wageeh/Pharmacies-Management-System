@@ -27,6 +27,7 @@ class InvMedicineController extends Controller
 
         InvMedicine::create
         ([
+
             'name' => $request->inv_medicine_name,
             'code' => $request->inv_medicine_code,
             'price' => $request->inv_medicine_price,
@@ -37,39 +38,39 @@ class InvMedicineController extends Controller
 
         return redirect()->route('inv_medicine.index');
     }
+
+    public function edit($id)
+    {
+        $inv_medicine = InvMedicine::find($id);
+        return view('inv_medicine.edit' , compact('inv_medicine'));
+    }
+
+    public function update(Request $request , $id)
+    {
+        $inv_medicine = InvMedicine::find($id);
+        if($inv_medicine)
+        {
+            $inv_medicine->update
+            ([
+                'name' => $request -> inv_medicine_name ,
+                'price' => $request -> inv_medicine_price ,
+                'quantity' => $request -> inv_medicine_quantity ,
+            ]);
+            return redirect() -> route('inv_medicine.index');
+        }
+    }
 //
-//    public function edit($id)
-//    {
-//        $medicine = Medicine::find($id);
-//        return view('medicine.edit' , compact('medicine'));
-//    }
-//
-//    public function update(Request $request , $id)
-//    {
-//        $medicine = Medicine::find($id);
-//        if($medicine)
-//        {
-//            $medicine->update
-//            ([
-//                'name' => $request -> medicine_name ,
-//                'price' => $request -> medicine_price ,
-//                'quantity' => $request -> medicine_quantity ,
-//            ]);
-//            return redirect() -> route('medicine.index');
-//        }
-//    }
-//
-//    public function delete(Request $request)
-//    {
-//        $medicine = Medicine::find($request -> medicine_id);
-//
-//        if($medicine)
-//        {
-//            $delete = $medicine -> delete();
-//            if($delete)
-//            {
-//                return response() -> json(['status' => 'ok']);
-//            }
-//        }
-//    }
+    public function delete(Request $request)
+    {
+        $inv_medicine = InvMedicine::find($request -> inv_medicine_id);
+
+        if($inv_medicine)
+        {
+            $delete = $inv_medicine -> delete();
+            if($delete)
+            {
+                return response() -> json(['status' => 'ok']);
+            }
+        }
+    }
 }
