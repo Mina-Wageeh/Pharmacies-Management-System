@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\InvMedicine;
 use App\Models\Medicine;
 use Illuminate\Http\Request;
 
@@ -10,8 +11,9 @@ class MedicineController extends Controller
 {
     public function index()
     {
+        $inv_medicines = InvMedicine::getInvMedicine();
         $medicines = Medicine::with('category')->where('branch_id' , auth()->user()->branch_id)->get();
-        return view('medicine.index' , compact('medicines'));
+        return view('medicine.index' , compact(['medicines' , 'inv_medicines']));
     }
 
     public function create()

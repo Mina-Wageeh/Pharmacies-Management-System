@@ -1532,7 +1532,7 @@ function getAlpha(string) {
 // generators
 function hexString(rgba, a) {
    var a = (a !== undefined && rgba.length === 3) ? a : rgba[3];
-   return "#" + hexDouble(rgba[0]) 
+   return "#" + hexDouble(rgba[0])
               + hexDouble(rgba[1])
               + hexDouble(rgba[2])
               + (
@@ -11536,7 +11536,7 @@ var Scale = core_element.extend({
 
 		me.beforeBuildTicks();
 
-		// New implementations should return an array of objects but for BACKWARD COMPAT,
+		// New implementation should return an array of objects but for BACKWARD COMPAT,
 		// we still support no return (`this.ticks` internally set by calling this method).
 		ticks = me.buildTicks() || [];
 
@@ -11669,11 +11669,11 @@ var Scale = core_element.extend({
 	buildTicks: helpers$1.noop,
 	afterBuildTicks: function(ticks) {
 		var me = this;
-		// ticks is empty for old axis implementations here
+		// ticks is empty for old axis implementation here
 		if (isArray(ticks) && ticks.length) {
 			return helpers$1.callback(me.options.afterBuildTicks, [me, ticks]);
 		}
-		// Support old implementations (that modified `this.ticks` directly in buildTicks)
+		// Support old implementation (that modified `this.ticks` directly in buildTicks)
 		me.ticks = helpers$1.callback(me.options.afterBuildTicks, [me, me.ticks]) || me.ticks;
 		return ticks;
 	},
@@ -11910,7 +11910,7 @@ var Scale = core_element.extend({
 
 		me.beforeTickToLabelConversion();
 
-		// New implementations should return the formatted tick labels but for BACKWARD
+		// New implementation should return the formatted tick labels but for BACKWARD
 		// COMPAT, we still support no return (`this.ticks` internally changed by calling
 		// this method and supposed to contain only string values).
 		labels = me.convertTicksToLabels(ticks) || me.ticks;

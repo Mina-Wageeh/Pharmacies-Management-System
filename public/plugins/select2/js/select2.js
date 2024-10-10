@@ -432,7 +432,7 @@ var requirejs, require, define;
             //http://www.whatwg.org/specs/web-apps/current-work/multipage/timers.html#dom-windowtimers-settimeout:
             //If want a value immediately, use require('id') instead -- something
             //that works in almond on the global level, but not guaranteed and
-            //unlikely to work in other AMD implementations.
+            //unlikely to work in other AMD implementation.
             setTimeout(function () {
                 main(undef, deps, callback, relName);
             }, 4);

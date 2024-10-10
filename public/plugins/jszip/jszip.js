@@ -317,7 +317,7 @@ if (typeof Promise !== "undefined") {
 }
 
 /**
- * Let the user use/change some implementations.
+ * Let the user use/change some implementation.
  */
 module.exports = {
     Promise: ES6Promise
@@ -1843,7 +1843,7 @@ DataReader.prototype = {
      * @return {number} a byte.
      */
     byteAt: function(i) {
-        // see implementations
+        // see implementation
     },
     /**
      * Get the next number with a given byte size.
@@ -1874,7 +1874,7 @@ DataReader.prototype = {
      * @return {Object} the raw data, implementation specific.
      */
     readData: function(size) {
-        // see implementations
+        // see implementation
     },
     /**
      * Find the last occurrence of a zip signature (4 bytes).
@@ -1882,7 +1882,7 @@ DataReader.prototype = {
      * @return {number} the index of the last occurrence, -1 if not found.
      */
     lastIndexOfSignature: function(sig) {
-        // see implementations
+        // see implementation
     },
     /**
      * Read the signature (4 bytes) at the current position and compare it with sig.
@@ -1890,7 +1890,7 @@ DataReader.prototype = {
      * @return {boolean} true if the signature matches, false otherwise.
      */
     readAndCheckSignature: function(sig) {
-        // see implementations
+        // see implementation
     },
     /**
      * Get the next date.
@@ -3460,8 +3460,8 @@ exports.prepareContent = function(name, inputData, isBinary, isOptimizedBinarySt
 
     // if inputData is already a promise, this flatten it.
     var promise = external.Promise.resolve(inputData).then(function(data) {
-        
-        
+
+
         var isBlob = support.blob && (data instanceof Blob || ['[object File]', '[object Blob]'].indexOf(Object.prototype.toString.call(data)) !== -1);
 
         if (isBlob && typeof FileReader !== "undefined") {

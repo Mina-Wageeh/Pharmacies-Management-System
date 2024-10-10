@@ -22,4 +22,9 @@ class InvMedicine extends Model
     {
         return $this->belongsTo(Inventory::class);
     }
+
+    public static function getInvMedicine()
+    {
+        return InvMedicine::select('code' , 'quantity')->where('branch_id' , auth()->user()->branch_id)->get();
+    }
 }

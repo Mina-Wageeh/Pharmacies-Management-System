@@ -22,4 +22,6 @@ class Medicine extends Model
         return $this->belongsTo(Category::class);
     }
 
+
+
 }

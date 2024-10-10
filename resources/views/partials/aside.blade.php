@@ -75,6 +75,15 @@
                         </div>
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a href="{{route('inv_medicine.index')}}" class="nav-link">
+                        <div class="d-flex align-content-center">
+                            <img src="{{asset('dist/img/icons/aside/right-arrow-2.png')}}" class="nav-icon aside-icon mr-3">
+                            <p>Orders</p>
+                        </div>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
