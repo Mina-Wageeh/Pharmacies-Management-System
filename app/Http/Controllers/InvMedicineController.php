@@ -73,4 +73,14 @@ class InvMedicineController extends Controller
             }
         }
     }
+
+
+
+
+    //Test
+    public function getMedQ()
+    {
+        $inv_medicines = InvMedicine::where('branch_id' , auth()->user()->branch_id)->get();
+        return view('inv_medicine.index' , compact('inv_medicines'));
+    }
 }

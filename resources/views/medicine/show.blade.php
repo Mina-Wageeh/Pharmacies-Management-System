@@ -6,7 +6,7 @@
                     <thead>
                     <tr>
                         <th class="col-1">ID</th>
-                        <th class="col-3">Name</th>
+                        <th class="col-2">Name</th>
                         <th class="col-1">Code</th>
                         <th class="col-1">Price</th>
                         <th class="col-3">Category</th>
@@ -24,22 +24,11 @@
                         <td>{{$medicine->price}}</td>
                         <td>{{$medicine->category->name}}</td>
                         <td>{{$medicine->quantity}}</td>
-                        <td>
-                        @foreach($inv_medicines as $inv_medicine)
-
-                            @if($inv_medicine->code === $medicine->code)
-                                    {{$inv_medicine->quantity}}
-                            @else
-                            {{0}}
-                            @endif
-                        @endforeach
-                        </td>
-
+                        <td>{{App\Traits\Helper::getSpecificInvMedicineQuantity($medicine->code)}}</td>
                         <td>
                             <div  class="d-flex justify-content-around">
                                 <a href="{{route('medicine.edit' , $medicine->id)}}" class="edit-btn">Edit</a>
                                 <a href="#" class="delete-btn" medicine_id = "{{$medicine->id}}">Delete</a>
-                                <a href="#" class="delete-btn" medicine_id = "{{$medicine->id}}">A</a>
                             </div>
                         </td>
                     </tr>

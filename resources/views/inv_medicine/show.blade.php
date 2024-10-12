@@ -25,6 +25,7 @@
                             <div  class="d-flex justify-content-around">
                                 <a href="{{route('inv_medicine.edit' , $inv_medicine->id)}}" class="edit-btn">Edit</a>
                                 <a href="#" class="delete-btn" inv_medicine_id = "{{$inv_medicine->id}}">Delete</a>
+                                <a href="#" class="send-to-branch text-white" data-toggle="modal" data-target="#select-num" inv_medicine_quantity="{{$inv_medicine->quantity}}">Send To Branch</a>
                             </div>
                         </td>
                     </tr>

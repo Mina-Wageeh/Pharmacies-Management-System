@@ -50,6 +50,9 @@ Route::group(['middleware'=>'auth'] , function()
         Route::get('/', [DoctorController::class, 'index'])->name('doctor.index');
         Route::get('create', [DoctorController::class, 'create'])->name('doctor.create');
         Route::post('store', [DoctorController::class, 'store'])->name('doctor.store');
+        Route::get('edit/{id}', [DoctorController::class, 'edit'])->name('doctor.edit');
+        Route::post('update/{id}', [DoctorController::class, 'update'])->name('doctor.update');
+        Route::post('delete', [DoctorController::class, 'delete'])->name('doctor.delete');
     });
 
     Route::group(['prefix'=>'categories'] , function()

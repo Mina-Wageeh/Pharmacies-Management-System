@@ -9,6 +9,7 @@
                         <th class="col-1">ID</th>
                         <th>National ID</th>
                         <th>Name</th>
+                        <th>Age</th>
                         <th>Phone</th>
                         <th>Address</th>
                         <th>Branch</th>
@@ -22,12 +23,13 @@
                         <td>{{$doctor->id}}</td>
                         <td>{{$doctor->national_id}}</td>
                         <td>{{$doctor->name}}</td>
+                        <td>{{$doctor->age}}</td>
                         <td>{{$doctor->phone}}</td>
                         <td>{{$doctor->address}}</td>
                         <td>{{$doctor->branch->address}}</td>
                         <td>
                             <div  class="d-flex justify-content-around">
-                                <a href="" class="edit-btn">Edit</a>
+                                <a href="{{route('doctor.edit' , $doctor->id)}}" class="edit-btn">Edit</a>
                                 <a href="#" class="delete-btn" doctor_id = "{{$doctor->id}}">Delete</a>
                             </div>
                         </td>

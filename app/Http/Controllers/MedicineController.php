@@ -11,7 +11,7 @@ class MedicineController extends Controller
 {
     public function index()
     {
-        $inv_medicines = InvMedicine::getInvMedicine();
+        $inv_medicines = InvMedicine::select('code' , 'quantity')->where('branch_id' , auth()->user()->branch_id)->get();
         $medicines = Medicine::with('category')->where('branch_id' , auth()->user()->branch_id)->get();
         return view('medicine.index' , compact(['medicines' , 'inv_medicines']));
     }
@@ -71,4 +71,6 @@ class MedicineController extends Controller
             }
         }
     }
+
+
 }

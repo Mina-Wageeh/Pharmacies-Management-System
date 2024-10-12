@@ -136,3 +136,9 @@ body::-webkit-scrollbar
     padding: 10px;
 }
 
+.increment-btn,
+.decrement-btn
+{
+    cursor: pointer;
+    user-select: none;
+}

@@ -22,6 +22,11 @@ class Medicine extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function invMedicine()
+    {
+        return $this->hasOne(InvMedicine::class);
+    }
+
 
 
 }

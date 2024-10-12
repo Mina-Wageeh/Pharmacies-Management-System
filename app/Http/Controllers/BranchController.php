@@ -2,17 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\PharmaciesDataTable;
 use App\Models\Branch;
-use App\Models\Pharmacy;
+use App\Services\implementation\BranchService;
+use App\Services\interface\IBranchService;
 use Illuminate\Http\Request;
-use Yajra\DataTables\DataTables;
 
 class BranchController extends Controller
 {
+    //Properties
+    public $branchService;
+
+    //Constructor Injected With Service
+    public function __construct(BranchService $branchService)
+    {
+        $this->branchService = $branchService;
+    }
+
     public function index()
     {
-        $branches = Branch::get();
+        $branches = $this->branchService->getBranches();
         return view('branch.index' , compact('branches'));
     }
 
@@ -23,16 +31,16 @@ class BranchController extends Controller
 
     public function store(Request $request)
     {
-
-
-        Branch::create
-        ([
+        $data =
+        [
           'name' => $request->branch_name,
           'phone' => $request->branch_phone,
           'address' => $request->branch_address,
-        ])->save();
+        ];
 
-        return redirect()->route('branch.index')->with('success', 'Pharmacy has been Created Successfully!')->with('timeout', 5000);
+        $this->branchService->createBranch($data);
+
+        return redirect()->route('branch.index');
     }
 
 }

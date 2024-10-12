@@ -3,13 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Services\implementation\CategoryService;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+
+    public $categoryService;
+
+    public function __construct(CategoryService $categoryService)
+    {
+        $this->categoryService = $categoryService;
+    }
+
     public function index()
     {
-        $categories = Category::get();
+        $categories = $this->categoryService->getAllCategories();
         return view('category.index' , compact('categories'));
     }
 
@@ -20,10 +29,12 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
-        Category::create
-        ([
+        $data =
+        [
             'name' => $request->category_name,
-        ])->save();
+        ];
+
+        $this->categoryService->createCategory($data);
 
         return redirect()->route('category.index');
     }

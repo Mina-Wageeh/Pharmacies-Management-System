@@ -19,7 +19,7 @@
                         <input name="inv_medicine_price" type="text" class="form-control" id="" placeholder="Price">
                     </div>
                     <div class="mb-3">
-                        <input name="inv_medicine_quantity"  min="1" max="1000" type="number" class="form-control" id="" placeholder="Quantity">
+                        <input name="inv_medicine_quantity"  min="0" max="1000" type="number" class="form-control" id="" placeholder="Quantity">
                     </div>
 
                     <div class="mb-3">

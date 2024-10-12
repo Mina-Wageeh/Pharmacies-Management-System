@@ -2,20 +2,24 @@
 
 namespace App\Services\implementation;
 
-use App\Services\interface\IBranchService;
+use App\Models\Branch;
 
-class BranchService implements IBranchService
+class BranchService
 {
-    public function __construct()
-    {
-
-    }
     public function getBranches()
     {
+        return Branch::get();
     }
 
-    public function createNewBranch()
+    public function getCurrentBranch()
     {
+        return  Branch::where('id' , auth()->user()->branch_id)->first();
+    }
 
+
+
+    public function createBranch($data)
+    {
+        return Branch::create($data);
     }
 }
