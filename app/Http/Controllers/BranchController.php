@@ -13,7 +13,7 @@ class BranchController extends Controller
     public $branchService;
 
     //Constructor Injected With Service
-    public function __construct(BranchService $branchService)
+    public function __construct(IBranchService $branchService)
     {
         $this->branchService = $branchService;
     }

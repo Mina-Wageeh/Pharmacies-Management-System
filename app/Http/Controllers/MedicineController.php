@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MedicineRequest;
 use App\Models\Category;
 use App\Models\InvMedicine;
 use App\Models\Medicine;
@@ -22,7 +23,7 @@ class MedicineController extends Controller
         return view('medicine.create' , compact('categories'));
     }
 
-    public function store(Request $request)
+    public function store(MedicineRequest $request)
     {
         Medicine::create
         ([

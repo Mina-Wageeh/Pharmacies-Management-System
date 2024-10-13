@@ -5,6 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property int id
+ * @property string name
+ */
 class Branch extends Model
 {
     use HasFactory;
@@ -22,11 +26,18 @@ class Branch extends Model
     ];
 
     //Relations
-    public function inventories() //Each Pharmacy Has One Inventory
+
+    /**
+     * @return Inventory
+     */
+    public function inventories()
     {
         return $this->hasOne(Inventory::class);
     }
 
+    /**
+     * @return Doctor[]
+     */
     public function doctors()
     {
         return $this->hasMany(Doctor::class);

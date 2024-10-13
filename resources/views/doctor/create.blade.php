@@ -11,22 +11,38 @@
                     @csrf
                     <div class="mb-3">
                         <input name="doctor_name" type="text" class="form-control" id="" placeholder="Name">
+                        @error('doctor_name')
+                            <small class="text-danger">{{$message}}</small>
+                        @enderror
                     </div>
+
 
                     <div class="mb-3">
                         <input name="doctor_nat_id" type="text" class="form-control" id="" placeholder="National ID">
+                        @error('doctor_nat_id')
+                            <small class="text-danger">{{$message}}</small>
+                        @enderror
                     </div>
 
                     <div class="mb-3">
                         <input name="doctor_age" type="text" class="form-control" id="" placeholder="Age">
+                        @error('doctor_age')
+                            <small class="text-danger">{{$message}}</small>
+                        @enderror
                     </div>
 
                     <div class="mb-3">
                         <input name="doctor_phone" type="text" class="form-control" id="" placeholder="Phone">
+                        @error('doctor_phone')
+                         <small class="text-danger">{{$message}}</small>
+                        @enderror
                     </div>
 
                     <div class="mb-3">
                         <input name="doctor_address" type="text" class="form-control" id="" placeholder="Address">
+                        @error('doctor_address')
+                            <small class="text-danger">{{$message}}</small>
+                        @enderror
                     </div>
 
                     <div class="mb-3">

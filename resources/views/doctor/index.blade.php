@@ -12,3 +12,30 @@
     </div>
 
 @endsection
+
+@section('scripts')
+    <script>
+        $(document).ready(function()
+        {
+            $(document).on('click' , '.delete-btn' , function(e)
+            {
+                e.preventDefault()
+                var doctor_id = $(this).attr('doctor_id')
+                var parent = $(this).parent().parent().parent();
+                $.ajax({
+                    type: 'post',
+                    url: '{{route('doctor.delete')}}',
+                    data:
+                        {
+                            '_token' : '{{csrf_token()}}',
+                            'doctor_id' : doctor_id
+                        },
+                    success : function(data)
+                    {
+                        parent.fadeOut(500);
+                    }
+                })
+            })
+        })
+    </script>
+@endsection

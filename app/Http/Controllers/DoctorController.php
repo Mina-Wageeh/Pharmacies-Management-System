@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Helper;
+use App\Http\Requests\DoctorRequest;
 use App\Models\Branch;
 use App\Models\Doctor;
 use App\Models\User;
@@ -35,7 +36,7 @@ class DoctorController extends Controller
         return view('doctor.create' , compact( 'branch'));
     }
 
-    public function store(Request $request)
+    public function store(DoctorRequest $request)
     {
         $data =
         [
@@ -47,7 +48,7 @@ class DoctorController extends Controller
             'address' => $request->doctor_address,
         ];
 
-        $this->doctorService->createDoctor($data);
+        $this->doctorService->storeDoctor($data);
 
         return redirect()->route('doctor.index');
     }
@@ -78,11 +79,11 @@ class DoctorController extends Controller
 
     public function delete(Request $request)
     {
-        $medicine = Medicine::find($request -> medicine_id);
+        $doctor = Doctor::find($request -> doctor_id);
 
-        if($medicine)
+        if($doctor)
         {
-            $delete = $medicine -> delete();
+            $delete = $doctor -> delete();
             if($delete)
             {
                 return response() -> json(['status' => 'ok']);

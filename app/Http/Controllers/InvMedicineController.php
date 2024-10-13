@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\InvMedicineRequest;
 use App\Models\Inventory;
 use App\Models\InvMedicine;
 use Illuminate\Http\Request;
@@ -21,7 +22,7 @@ class InvMedicineController extends Controller
         return view('inv_medicine.create' , compact('inventory'));
     }
 
-    public function store(Request $request)
+    public function store(InvMedicineRequest $request)
     {
         $inventory_data = json_decode($request-> inventory_data);
 

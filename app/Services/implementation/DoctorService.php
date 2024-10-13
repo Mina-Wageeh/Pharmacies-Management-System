@@ -13,8 +13,25 @@ class DoctorService
         return Doctor::with('branch')->where('branch_id' , auth()->user()->branch_id)->get();
     }
 
-    public function createDoctor($data)
+    public function getDoctor($id)
+    {
+        return Doctor::find($id);
+    }
+
+
+    public function storeDoctor($data)
     {
         return Doctor::create($data);
     }
+
+    public function deleteDoctor($id)
+    {
+        $doctor = $this->getDoctor($id);
+        if($doctor)
+        {
+            $doctor -> delete();
+        }
+    }
+
+
 }

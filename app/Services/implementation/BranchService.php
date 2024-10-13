@@ -3,8 +3,9 @@
 namespace App\Services\implementation;
 
 use App\Models\Branch;
+use App\Services\interface\IBranchService;
 
-class BranchService
+class BranchService implements IBranchService
 {
     public function getBranches()
     {
