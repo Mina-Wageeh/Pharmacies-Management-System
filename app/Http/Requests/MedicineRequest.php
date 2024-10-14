@@ -26,8 +26,8 @@ class MedicineRequest extends FormRequest
         return
         [
             'medicine_name' => 'required|min:3',
-            'medicine_code' => 'required|regex://[A-Z]{2}[0-9]{4}/',
-            'medicine_price' => 'required|decimal',
+            'medicine_code' => 'required|regex:/[A-Z]{2}[0-9]{4}/',
+            'medicine_price' => 'required|numeric',
             'medicine_quantity' => 'required|integer',
             'category_id' => 'required|numeric',
         ];

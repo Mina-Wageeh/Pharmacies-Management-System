@@ -13,7 +13,7 @@ class InvMedicineRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -26,8 +26,8 @@ class InvMedicineRequest extends FormRequest
         return
             [
                 'inv_medicine_name' => 'required|min:3',
-                'inv_medicine_code' => 'required|regex://[A-Z]{2}[0-9]{4}/',
-                'inv_medicine_price' => 'required|decimal',
+                'inv_medicine_code' => 'required|regex:/[A-Z]{2}[0-9]{4}/',
+                'inv_medicine_price' => 'required|numeric',
                 'inv_medicine_quantity' => 'required|integer',
             ];
     }

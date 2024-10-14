@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Branch;
-use App\Services\implementation\BranchService;
+use App\Services\Implementation\BranchService;
 use App\Services\interface\IBranchService;
 use Illuminate\Http\Request;
 
@@ -13,7 +13,7 @@ class BranchController extends Controller
     public $branchService;
 
     //Constructor Injected With Service
-    public function __construct(IBranchService $branchService)
+    public function __construct(BranchService $branchService)
     {
         $this->branchService = $branchService;
     }
@@ -38,7 +38,7 @@ class BranchController extends Controller
           'address' => $request->branch_address,
         ];
 
-        $this->branchService->createBranch($data);
+        $this->branchService->storeBranch($data);
 
         return redirect()->route('branch.index');
     }

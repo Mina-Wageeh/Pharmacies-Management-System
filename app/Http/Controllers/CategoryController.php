@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
-use App\Services\implementation\CategoryService;
+use App\Services\Implementation\CategoryService;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -19,7 +19,7 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $categories = $this->categoryService->getAllCategories();
+        $categories = $this->categoryService->getCategories();
         return view('category.index' , compact('categories'));
     }
 
@@ -35,7 +35,7 @@ class CategoryController extends Controller
             'name' => $request->category_name,
         ];
 
-        $this->categoryService->createCategory($data);
+        $this->categoryService->storeCategory($data);
 
         return redirect()->route('category.index');
     }

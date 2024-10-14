@@ -7,8 +7,8 @@ use App\Http\Requests\DoctorRequest;
 use App\Models\Branch;
 use App\Models\Doctor;
 use App\Models\User;
-use App\Services\implementation\BranchService;
-use App\Services\implementation\DoctorService;
+use App\Services\Implementation\BranchService;
+use App\Services\Implementation\DoctorService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -26,13 +26,13 @@ class DoctorController extends Controller
 
     public function index()
     {
-        $doctors = $this->doctorService->getAllDoctors();
+        $doctors = $this->doctorService->getDoctors();
         return view('doctor.index' , compact('doctors'));
     }
 
     public function create()
     {
-        $branch = $this->branchService->getCurrentBranch();
+        $branch = $this->branchService->getBranch(auth()->user()->branch_id);
         return view('doctor.create' , compact( 'branch'));
     }
 
@@ -56,25 +56,24 @@ class DoctorController extends Controller
 
     public function edit($id)
     {
-        $doctor = Doctor::find($id);
+        $doctor = $this->doctorService->getDoctor($id);
         return view('doctor.edit' , compact('doctor'));
     }
 
     public function update(Request $request , $id)
     {
-        $doctor = Doctor::find($id);
-        if($doctor)
-        {
-            $doctor->update
-            ([
-                'national_id' => $request -> doctor_nat_id ,
-                'name' => $request -> doctor_name ,
-                'age' => $request -> doctor_age ,
-                'phone' => $request -> doctor_phone ,
-                'address' => $request -> doctor_address ,
-            ]);
-            return redirect() -> route('doctor.index');
-        }
+        $data =
+        [
+            'national_id' => $request -> doctor_nat_id ,
+            'name' => $request -> doctor_name ,
+            'age' => $request -> doctor_age ,
+            'phone' => $request -> doctor_phone ,
+            'address' => $request -> doctor_address ,
+        ];
+
+        $this->doctorService->updateDoctor($data ,$id);
+
+        return redirect() -> route('doctor.index');
     }
 
     public function delete(Request $request)

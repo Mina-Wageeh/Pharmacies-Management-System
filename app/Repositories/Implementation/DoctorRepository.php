@@ -1,14 +1,14 @@
 <?php
 
 
-namespace App\Services\implementation;
+namespace App\Repositories\Implementation;
 
 
 use App\Models\Doctor;
 
-class DoctorService
+class DoctorRepository
 {
-    public function getAllDoctors()
+    public function getDoctors()
     {
         return Doctor::with('branch')->where('branch_id' , auth()->user()->branch_id)->get();
     }
@@ -18,20 +18,17 @@ class DoctorService
         return Doctor::find($id);
     }
 
-
     public function storeDoctor($data)
     {
         return Doctor::create($data);
     }
 
-    public function deleteDoctor($id)
+    public function updateDoctor($data , $id)
     {
         $doctor = $this->getDoctor($id);
         if($doctor)
         {
-            $doctor -> delete();
+            $doctor->update($data);
         }
     }
-
-
 }

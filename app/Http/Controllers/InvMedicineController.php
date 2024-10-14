@@ -5,74 +5,75 @@ namespace App\Http\Controllers;
 use App\Http\Requests\InvMedicineRequest;
 use App\Models\Inventory;
 use App\Models\InvMedicine;
+use App\Services\Implementation\InventoryService;
+use App\Services\Implementation\InvMedicineService;
 use Illuminate\Http\Request;
 
 class InvMedicineController extends Controller
 {
+    public $invMedicineService;
+    public $inventoryService;
+
+    public function __construct(InvMedicineService $invMedicineService , InventoryService $inventoryService)
+    {
+        $this->invMedicineService = $invMedicineService;
+        $this->inventoryService = $inventoryService;
+    }
+
     public function index()
     {
-        $inv_medicines = InvMedicine::where('branch_id' , auth()->user()->branch_id)->get();
+        $inv_medicines = $this->invMedicineService->getInvMedicines();
         return view('inv_medicine.index' , compact('inv_medicines'));
     }
 
     public function create()
     {
-        $inventory = Inventory::where('branch_id' , auth()->user()->branch_id)->first();
-//        return $inventory;
+        $inventory = $this->inventoryService->getCurrentInventory();
         return view('inv_medicine.create' , compact('inventory'));
     }
 
-    public function store(InvMedicineRequest $request)
+    public function store(Request $request)
     {
-        $inventory_data = json_decode($request-> inventory_data);
+        $inventory = $this->inventoryService->getCurrentInventory();;
 
-        InvMedicine::create
-        ([
-
+        $data =
+        [
             'name' => $request->inv_medicine_name,
             'code' => $request->inv_medicine_code,
             'price' => $request->inv_medicine_price,
             'quantity' => $request->inv_medicine_quantity,
-            'inventory_id' => $inventory_data->id,
+            'inventory_id' => $inventory->id,
             'branch_id' => auth()->user()->branch_id,
-        ])->save();
+        ];
+
+        $this->invMedicineService->storeInvMedicine($data);
 
         return redirect()->route('inv_medicine.index');
     }
 
     public function edit($id)
     {
-        $inv_medicine = InvMedicine::find($id);
+        $inv_medicine = $this->invMedicineService->getInvMedicine($id);
         return view('inv_medicine.edit' , compact('inv_medicine'));
     }
 
     public function update(Request $request , $id)
     {
-        $inv_medicine = InvMedicine::find($id);
-        if($inv_medicine)
-        {
-            $inv_medicine->update
-            ([
-                'name' => $request -> inv_medicine_name ,
-                'price' => $request -> inv_medicine_price ,
-                'quantity' => $request -> inv_medicine_quantity ,
-            ]);
-            return redirect() -> route('inv_medicine.index');
-        }
+        $data =
+        [
+            'name' => $request -> inv_medicine_name ,
+            'price' => $request -> inv_medicine_price ,
+            'quantity' => $request -> inv_medicine_quantity ,
+        ];
+
+        $this->invMedicineService->updateMedicine($data , $id);
+
+        return redirect() -> route('inv_medicine.index');
     }
-//
+
     public function delete(Request $request)
     {
-        $inv_medicine = InvMedicine::find($request -> inv_medicine_id);
-
-        if($inv_medicine)
-        {
-            $delete = $inv_medicine -> delete();
-            if($delete)
-            {
-                return response() -> json(['status' => 'ok']);
-            }
-        }
+        $this->invMedicineService->deleteInvMedicine($request->inv_medicine_id);
     }
 
 
