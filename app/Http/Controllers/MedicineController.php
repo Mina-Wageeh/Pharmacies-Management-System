@@ -76,5 +76,18 @@ class MedicineController extends Controller
         $this->medicineService->deleteMedicine($request -> medicine_id);
     }
 
+    // Helper Functions //
+    public function getMedicinesByCategory($categoryID)
+    {
+        $medicines_by_category = $this->medicineService->getMedicinesByCategory($categoryID);;
+        return response()->json($medicines_by_category);
+    }
+
+    public function getMedicineByID($id)
+    {
+        $medicine = $this->medicineService->getMedicine($id);;
+        return response()->json($medicine);
+    }
+
 
 }

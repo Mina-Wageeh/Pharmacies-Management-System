@@ -142,3 +142,20 @@ body::-webkit-scrollbar
     cursor: pointer;
     user-select: none;
 }
+
+.label-text
+{
+    font-size: 13px;
+    font-weight: bolder !important;
+}
+
+.show-medicine-price
+{
+    border-color: #ffdd00 !important;
+}
+
+.total-price
+{
+    color: #ffdd00;
+}
+

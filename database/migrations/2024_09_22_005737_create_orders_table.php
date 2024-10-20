@@ -15,11 +15,10 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('customer_id')->constrained('customers')->onDelete('cascade');
-            $table->foreignId('branch_id')->constrained('branches')->onDelete('cascade');
+            $table->foreignId('customer_id');
+            $table->foreignId('branch_id');
 
-            $table->decimal('total_amount', 8, 2);
-            $table->string('status')->default('pending'); // pending, processing, completed, cancelled
+            $table->decimal('total_price', 8, 2);
 
             $table->date('order_date');
             $table->timestamps();

@@ -17,6 +17,11 @@ class MedicineRepository
         return Medicine::find($id);
     }
 
+    public function getMedicinesByCategory($categoryID)
+    {
+        return Medicine::select('id' , 'name')->where('category_id' , $categoryID)->get();
+    }
+
     public function storeMedicine($data)
     {
         Medicine::create($data);

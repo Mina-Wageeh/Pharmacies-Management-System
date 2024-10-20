@@ -9,6 +9,7 @@ use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\InvMedicineController;
 use App\Http\Controllers\MedicineController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -84,6 +85,19 @@ Route::group(['middleware'=>'auth'] , function()
             Route::post('delete', [InvMedicineController::class, 'delete'])->name('inv_medicine.delete');
         });
 
+    });
+
+    Route::group(['prefix'=>'orders'] , function()
+    {
+        Route::get('/', [OrderController::class, 'index'])->name('order.index');
+        Route::get('create', [OrderController::class, 'create'])->name('order.create');
+        Route::post('store', [OrderController::class, 'store'])->name('order.store');
+        Route::get('edit/{id}', [OrderController::class, 'edit'])->name('order.edit');
+        Route::post('update/{id}', [OrderController::class, 'update'])->name('order.update');
+        Route::post('delete', [OrderController::class, 'delete'])->name('order.delete');
+
+        Route::get('get-med-by-cat/{id}', [MedicineController::class, 'getMedicinesByCategory'])->name('medicine.category');
+        Route::get('get-med-by-id/{id}', [MedicineController::class, 'getMedicineByID'])->name('medicine.id');
     });
 
 

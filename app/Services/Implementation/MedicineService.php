@@ -24,6 +24,11 @@ class MedicineService
         return $this->medicineRepository->getMedicine($id);
     }
 
+    public function getMedicinesByCategory($categoryID)
+    {
+        return $this->medicineRepository->getMedicinesByCategory($categoryID);
+    }
+
     public function storeMedicine($data)
     {
         $this->medicineRepository->storeMedicine($data);
