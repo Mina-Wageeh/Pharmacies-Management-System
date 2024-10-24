@@ -7,13 +7,12 @@
                     <thead>
                     <tr>
                         <th class="col-1">ID</th>
-                        <th>National ID</th>
-                        <th>Name</th>
-                        <th>Age</th>
-                        <th>Phone</th>
-                        <th>Address</th>
-                        <th>Branch</th>
-                        <th>Actions</th>
+                        <th class="col-2">National ID</th>
+                        <th class="col-1">Name</th>
+                        <th class="col-1">Age</th>
+                        <th class="col-2">Phone</th>
+                        <th class="col-3">Address</th>
+                        <th class="col-2">Actions</th>
 
                     </tr>
                     </thead>
@@ -26,7 +25,6 @@
                         <td>{{$doctor->age}}</td>
                         <td>{{$doctor->phone}}</td>
                         <td>{{$doctor->address}}</td>
-                        <td>{{$doctor->branch->address}}</td>
                         <td>
                             <div  class="d-flex justify-content-around">
                                 <a href="{{route('doctor.edit' , $doctor->id)}}" class="edit-btn">Edit</a>

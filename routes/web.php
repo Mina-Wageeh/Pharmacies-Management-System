@@ -106,7 +106,6 @@ Route::group(['middleware'=>'auth'] , function()
 
 Route::get('register', [RegisterController::class, 'register'])->name('register');
 
-Route::get('session', [SessionController::class, 'branchSession'])->name('session');
 
 
 

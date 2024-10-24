@@ -10,7 +10,7 @@ class DoctorRepository
 {
     public function getDoctors()
     {
-        return Doctor::with('branch')->where('branch_id' , auth()->user()->branch_id)->get();
+        return Doctor::where('branch_id' , auth()->user()->branch_id)->get();
     }
 
     public function getDoctor($id)

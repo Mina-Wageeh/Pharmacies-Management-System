@@ -149,7 +149,7 @@ body::-webkit-scrollbar
     font-weight: bolder !important;
 }
 
-.show-medicine-price
+.show-medicine-price , #medicine_price
 {
     border-color: #ffdd00 !important;
 }

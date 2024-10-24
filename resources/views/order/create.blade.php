@@ -55,7 +55,7 @@
 
                         <div class="form-group col-2">
                             <label for="medicine_price" class="label-text">One Price</label>
-                            <input name="medicine_price" id="medicine_price" type="text" class="form-control medicine_price" readonly>
+                            <input name="medicine_price" id="medicine_price" type="text" class="form-control medicine_price text-muted" readonly>
                         </div>
 
                         <div class="form-group col-2">
@@ -95,7 +95,6 @@
                 {
                     $('#medicines').empty().append('<option selected hidden>Select Medicine</option>');
 
-                    console.log(data);
                     if(data.length == 0)
                     {
                         $('#medicines').append("<option disabled>No Medicinens Available</option>");
